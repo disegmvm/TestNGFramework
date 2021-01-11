@@ -16,6 +16,9 @@ public class HrmsLoginPage extends CommonMethods {
     @FindBy(css = "input#btnLogin")
     public WebElement loginBtn;
 
+    @FindBy(id="spanMessage")
+    public WebElement errorLoginMsg;
+
     public HrmsLoginPage(){
         PageFactory.initElements(driver,this);
     }

@@ -7,8 +7,8 @@ import com.hrms.utils.ConfigsReader;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends CommonMethods {
-    @Test
+public class AdminLoginTest extends CommonMethods {
+    @Test (groups = "smoke")
     public void adminLogin(){
         HrmsLoginPage loginPage = new HrmsLoginPage();
         sendText(loginPage.usernameTextBox, ConfigsReader.getPropertyValue("username"));

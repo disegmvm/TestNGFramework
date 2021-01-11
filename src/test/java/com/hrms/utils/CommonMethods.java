@@ -1,6 +1,7 @@
 package com.hrms.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -98,5 +99,18 @@ public class CommonMethods {
     public static void click(WebElement element){
         waitUntilClickable(element);
         element.click();
+    }
+
+    /*this method creates JSExecutor:
+    * */
+    public static JavascriptExecutor getJSExecutor(){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        return js;
+    }
+
+    /*this method clicks at WebElement using JSExecutor:
+    * */
+    public static void jsClick(WebElement element){
+        getJSExecutor().executeScript("arguments[0].click",element);
     }
 }
