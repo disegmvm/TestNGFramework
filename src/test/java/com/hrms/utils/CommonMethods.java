@@ -63,19 +63,26 @@ public class CommonMethods {
 
 
     }
-    @AfterMethod(alwaysRun = true)
+    /*@AfterMethod(alwaysRun = true)
     public static void tearDown(){
         if (driver!=null){
             driver.quit();
         }
-    }
+    }*/
 
 
     /*this method clears a textbox and send specific text to it:
     * */
-    public static void sendText(WebElement element, String textToSend){
+    /*public static void sendText(WebElement element, String textToSend){
         element.clear();
         element.sendKeys(textToSend);
+    }*/
+
+    public static void sendText(WebElement element, String textToSend){
+        element.clear();
+        if(textToSend!=null) {
+            element.sendKeys(textToSend);
+        }
     }
 
 

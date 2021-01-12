@@ -25,7 +25,8 @@ public class ConfigsReader {
     }
 
     public static String getPropertyValue (String key){
-        return prop.getProperty(key);
+        return readProperties(Constants.CONFIGURATION_FILEPATH).getProperty(key);
+       // return prop.getProperty(key);
     }
 
 }
