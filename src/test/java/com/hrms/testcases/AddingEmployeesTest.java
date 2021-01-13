@@ -6,6 +6,7 @@ import com.hrms.pages.HrmsEmployeeListPage;
 import com.hrms.pages.HrmsLoginPage;
 import com.hrms.utils.CommonMethods;
 import com.hrms.utils.ConfigsReader;
+import com.hrms.utils.Constants;
 import com.hrms.utils.ExcelReader;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
@@ -24,10 +25,10 @@ import java.util.Map;
 
 public class AddingEmployeesTest extends CommonMethods {
 
-String excelFilePath = "C:\\Users\\PDD\\eclipse-workspace\\TestNGFramework\\src\\test\\resources\\testdata\\5Employees.xlsx";
+String excelFilePath = Constants.EXCEL_FILEPATH;
 String employeesId;
 
-        @Test
+        @Test (groups = "regression")
         public void addingEmployees(){
         TakesScreenshot ts = (TakesScreenshot) driver;
         HrmsLoginPage loginPage = new HrmsLoginPage();
@@ -56,8 +57,7 @@ String employeesId;
             addEmpPage.addPhotoBtn.sendKeys(eachEmployee.get("Photo"));
             addEmpPage.createLoginCheckBox.click();
             waitUntilClickable(addEmpPage.userNameField);
-            sendText(addEmpPage.userNameField, eachEmployee.get("username"));
-            System.out.println(eachEmployee.get("password"));
+            sendText(addEmpPage.userNameField, generateRandomString());
             sendText(addEmpPage.passwordField, eachEmployee.get("password"));
             sendText(addEmpPage.confirmPwField, eachEmployee.get("password"));
             addEmpPage.saveBtn.click();
@@ -87,12 +87,7 @@ String employeesId;
 
             //taking screenshot:
             getExplicitWait().until(ExpectedConditions.visibilityOfElementLocated(By.id("empPic")));
-            File sourceFile = ts.getScreenshotAs(OutputType.FILE);
-            try {
-                FileUtils.copyFile(sourceFile, new File("C:\\Users\\PDD\\eclipse-workspace\\TestNGFramework\\src\\test\\resources\\testdata\\AddingEmployeesSSs\\" + eachEmployee.get("FirstName")+".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            screenShot(eachEmployee.get("FirstName"));
         }
     }
 }
