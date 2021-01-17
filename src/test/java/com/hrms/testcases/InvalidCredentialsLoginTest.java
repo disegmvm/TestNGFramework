@@ -7,6 +7,7 @@ import com.hrms.utils.Constants;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class InvalidCredentialsLoginTest extends CommonMethods {
     @DataProvider
@@ -34,7 +35,7 @@ public class InvalidCredentialsLoginTest extends CommonMethods {
         return data;
     }
 
-    @Test (dataProvider="InvalidLoginData", groups = "regression")
+    @Test (dataProvider="InvalidLoginData",  groups = "regression")
     public void invalidCredentialsLoginTest(String username, String pw, String msg){
         HrmsLoginPage loginPage = new HrmsLoginPage();
         sendText(loginPage.usernameTextBox,username);
